@@ -12,7 +12,8 @@ export class User {
   @Property()
   password!: string;
 
-  constructor(name: string) {
+  constructor(name: string, password: string) {
     this.name = name;
+    this.password = password;
   }
 }
