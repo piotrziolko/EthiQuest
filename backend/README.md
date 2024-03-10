@@ -6,6 +6,10 @@ EthiQuest - backend
 
 ```bash
 $ npm install
+
+# Create a .env file in the root of the project and add the following environment variables
+
+$ cp .env.example .env
 ```
 
 ## Running the app
