@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { User } from '../sql/entities/user.entity';
+import { User } from '../../sql/entities/user.entity';
 import { EntityManager } from '@mikro-orm/postgresql';
 
 @Injectable()
