@@ -32,6 +32,19 @@
           "primary": false,
           "nullable": false,
           "mappedType": "string"
+        },
+        "permissions": {
+          "name": "permissions",
+          "type": "text[]",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "default": "'{}'",
+          "enumItems": [
+            "DeleteForm"
+          ],
+          "mappedType": "array"
         }
       },
       "name": "user",
