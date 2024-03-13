@@ -1,7 +1,15 @@
-import { Collection, Entity, ManyToOne, OneToMany, Property, Ref, ref } from "@mikro-orm/core";
+import {
+  Collection,
+  Entity,
+  ManyToOne,
+  OneToMany,
+  Property,
+  Ref,
+  ref,
+} from '@mikro-orm/core';
 import { BaseEntity } from './base.entity';
-import { User } from "./user.entity";
-import { Form } from "./form.entity";
+import { User } from './user.entity';
+import { Form } from './form.entity';
 
 @Entity()
 export class Template extends BaseEntity {

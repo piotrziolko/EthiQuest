@@ -1,8 +1,12 @@
-import { BadRequestException, Injectable, UnauthorizedException } from "@nestjs/common";
+import {
+  BadRequestException,
+  Injectable,
+  UnauthorizedException,
+} from '@nestjs/common';
 import { UsersService } from '../../users/services/users.service';
 import { JwtService } from '@nestjs/jwt';
 import { HashingService } from '../../utils/services/hashing.service';
-import { JwtUserPayload } from "../dto/request-with-user.payload";
+import { JwtUserPayload } from '../dto/request-with-user.payload';
 
 @Injectable()
 export class AuthService {
@@ -16,7 +20,11 @@ export class AuthService {
     const user = await this.usersService.findOne(username);
     if (user && (await this.hashingService.compare(password, user.password))) {
       return {
-        access_token: await this.createAccessToken({ username: user.name, sub: user.uuid, permissions: user.permissions }),
+        access_token: await this.createAccessToken({
+          username: user.name,
+          sub: user.uuid,
+          permissions: user.permissions,
+        }),
       };
     }
     throw new UnauthorizedException();
@@ -29,10 +37,17 @@ export class AuthService {
     }
 
     const hashedPassword = await this.hashingService.hash(password);
-    const createdUser = await this.usersService.create(username, hashedPassword);
+    const createdUser = await this.usersService.create(
+      username,
+      hashedPassword,
+    );
 
     return {
-      access_token: await this.createAccessToken({ username, sub: createdUser.uuid, permissions: createdUser.permissions }),
+      access_token: await this.createAccessToken({
+        username,
+        sub: createdUser.uuid,
+        permissions: createdUser.permissions,
+      }),
     };
   }
 

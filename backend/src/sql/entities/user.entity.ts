@@ -1,9 +1,9 @@
-import { Collection, Entity, Enum, OneToMany, Property } from "@mikro-orm/core";
+import { Collection, Entity, Enum, OneToMany, Property } from '@mikro-orm/core';
 import Permission from '../../auth/types/permission.type';
-import { BaseEntity } from "./base.entity";
-import { Template } from "./template.entity";
-import { Form } from "./form.entity";
-import { FormResponse } from "./form-response.entity";
+import { BaseEntity } from './base.entity';
+import { Template } from './template.entity';
+import { Form } from './form.entity';
+import { FormResponse } from './form-response.entity';
 
 @Entity()
 export class User extends BaseEntity {

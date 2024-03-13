@@ -1,10 +1,10 @@
 enum FormsPermission {
-  DeleteForm = 'DeleteForm'
+  DeleteForm = 'DeleteForm',
 }
 
 const Permission = {
-  ...FormsPermission
-}
+  ...FormsPermission,
+};
 
 type Permission = FormsPermission;
 
