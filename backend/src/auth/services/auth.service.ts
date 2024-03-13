@@ -1,4 +1,4 @@
-import { Injectable, UnauthorizedException } from '@nestjs/common';
+import { BadRequestException, Injectable, UnauthorizedException } from "@nestjs/common";
 import { UsersService } from '../../users/services/users.service';
 import { JwtService } from '@nestjs/jwt';
 import { HashingService } from '../../utils/services/hashing.service';
@@ -15,16 +15,28 @@ export class AuthService {
   async signIn(username: string, password: string) {
     const user = await this.usersService.findOne(username);
     if (user && (await this.hashingService.compare(password, user.password))) {
-      const payload: JwtUserPayload = { username: user.name, sub: user.uuid, permissions: user.permissions }
       return {
-        access_token: await this.jwtService.signAsync(payload),
+        access_token: await this.createAccessToken({ username: user.name, sub: user.uuid, permissions: user.permissions }),
       };
     }
     throw new UnauthorizedException();
   }
 
   async register(username: string, password: string) {
+    const user = await this.usersService.findOne(username);
+    if (user) {
+      throw new BadRequestException('User already exists');
+    }
+
     const hashedPassword = await this.hashingService.hash(password);
-    return this.usersService.create(username, hashedPassword);
+    const createdUser = await this.usersService.create(username, hashedPassword);
+
+    return {
+      access_token: await this.createAccessToken({ username, sub: createdUser.uuid, permissions: createdUser.permissions }),
+    };
+  }
+
+  private createAccessToken(payload: JwtUserPayload) {
+    return this.jwtService.signAsync(payload);
   }
 }
