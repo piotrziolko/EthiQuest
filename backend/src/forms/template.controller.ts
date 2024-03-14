@@ -11,7 +11,7 @@ import {
 } from '@nestjs/common';
 import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
 import { CreateTemplateDto } from './dto/create-template.dto';
-import { TemplateService } from './services/template-service';
+import { TemplateService } from './services/template.service';
 import { RequestWithUserPayload } from '../auth/dto/request-with-user.payload';
 import { AuthGuard } from '../auth/guards/auth.guard';
 

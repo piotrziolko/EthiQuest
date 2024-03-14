@@ -4,6 +4,8 @@ import {
   ManyToOne,
   OneToMany,
   Property,
+  Ref,
+  ref,
 } from '@mikro-orm/core';
 import { BaseEntity } from './base.entity';
 import { Template } from './template.entity';
@@ -13,10 +15,10 @@ import { FormResponse } from './form-response.entity';
 @Entity()
 export class Form extends BaseEntity {
   @ManyToOne(() => Template)
-  template!: Template;
+  template!: Ref<Template>;
 
   @ManyToOne(() => User)
-  owner!: User;
+  owner!: Ref<User>;
 
   @Property({ type: 'datetime', nullable: true })
   startDate: Date = null;
@@ -27,8 +29,16 @@ export class Form extends BaseEntity {
   @OneToMany(() => FormResponse, (formResponse) => formResponse.form)
   formResponse = new Collection<FormResponse>(this);
 
-  constructor(template: Template) {
+  constructor(
+    templateId: string,
+    ownerId: string,
+    startDate: Date,
+    endDate: Date,
+  ) {
     super();
-    this.template = template;
+    this.template = ref(Template, templateId);
+    this.owner = ref(User, ownerId);
+    this.startDate = startDate;
+    this.endDate = endDate;
   }
 }
