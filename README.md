@@ -1,4 +1,4 @@
-### Nazwa Aplikacji: EthiQuest
+### Application Name: EthiQuest
 
-### Opis:
-EthiQuest to interaktywna platforma online zaprojektowana do angażowania użytkowników w głosowania na różnorodne dylematy etyczne. Umożliwia ona społeczności dyskusję i refleksję nad złożonymi kwestiami moralnymi, zachęcając do głębszego zrozumienia i analizy własnych przekonań. Aplikacja oferuje szeroki zakres tematów, od codziennych dylematów moralnych po skomplikowane kwestie etyczne w nauce, technologii i społeczeństwie.
+### Description:
+EthiQuest is an interactive online platform designed to engage users in voting on a variety of ethical dilemmas. It enables the community to discuss and reflect on complex moral issues, encouraging deeper understanding and analysis of their own beliefs. The app offers a wide range of topics, from everyday moral dilemmas to complex ethical issues in science, technology and society.
