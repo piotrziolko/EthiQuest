@@ -1,9 +1,14 @@
 import { ApiProperty } from '@nestjs/swagger';
+import { ValidateNested } from 'class-validator';
+import { Type } from 'class-transformer';
+import { Form } from './form.dto';
 
 export class CreateTemplateDto {
   @ApiProperty()
   name: string;
 
   @ApiProperty()
-  data: Record<string, any>;
+  @ValidateNested()
+  @Type(() => Form)
+  data: Form;
 }
