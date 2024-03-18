@@ -1,14 +1,8 @@
 import { Type } from 'class-transformer';
 import {
   IsArray,
-  IsEmail,
   IsNotEmpty,
   IsOptional,
-  Matches,
-  Max,
-  MaxLength,
-  Min,
-  ValidateIf,
   ValidateNested,
 } from 'class-validator';
 
@@ -22,7 +16,15 @@ class Option {
 
 class FormField {
   @IsNotEmpty()
-  type: string;
+  type:
+    | 'email'
+    | 'text'
+    | 'number'
+    | 'password'
+    | 'select'
+    | 'radio'
+    | 'checkbox'
+    | 'textarea';
 
   @IsNotEmpty()
   label: string;
@@ -40,26 +42,6 @@ class FormField {
   @IsOptional()
   @ValidateNested({ each: true })
   options?: Option[];
-
-  @ValidateIf((o) => o.type === 'email')
-  @IsEmail()
-  email?: string;
-
-  @ValidateIf((o) => o.type === 'text')
-  @MaxLength(255)
-  text?: string;
-
-  @ValidateIf((o) => o.type === 'number')
-  @Min(0)
-  @Max(100)
-  number?: number;
-
-  @ValidateIf((o) => o.type === 'password')
-  @Matches(/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/, {
-    message:
-      'Hasło musi zawierać co najmniej 8 znaków, w tym jedną literę i jedną cyfrę',
-  })
-  password?: string;
 }
 
 class Section {
