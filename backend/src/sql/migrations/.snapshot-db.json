@@ -53,6 +53,15 @@
           "nullable": false,
           "mappedType": "string"
         },
+        "email": {
+          "name": "email",
+          "type": "varchar(255)",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "mappedType": "string"
+        },
         "permissions": {
           "name": "permissions",
           "type": "text[]",

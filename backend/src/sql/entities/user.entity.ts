@@ -13,6 +13,9 @@ export class User extends BaseEntity {
   @Property()
   password!: string;
 
+  @Property()
+  email!: string;
+
   @Enum({ items: () => Permission, array: true, default: [] })
   public permissions: Permission[];
 
@@ -25,9 +28,10 @@ export class User extends BaseEntity {
   @OneToMany(() => FormResponse, (formResponse) => formResponse.owner)
   formResponse = new Collection<FormResponse>(this);
 
-  constructor(name: string, password: string) {
+  constructor(name: string, email, password: string) {
     super();
     this.name = name;
+    this.email = email;
     this.password = password;
   }
 }

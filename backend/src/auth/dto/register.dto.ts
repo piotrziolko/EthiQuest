@@ -8,5 +8,9 @@ export class RegisterDto {
 
   @ApiProperty()
   @IsNotEmpty()
+  email!: string;
+
+  @ApiProperty()
+  @IsNotEmpty()
   password!: string;
 }

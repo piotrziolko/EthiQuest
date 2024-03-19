@@ -17,7 +17,7 @@ export class AuthService {
   ) {}
 
   async signIn(username: string, password: string) {
-    const user = await this.usersService.findOne(username);
+    const user = await this.usersService.findOneByUsername(username);
     if (user && (await this.hashingService.compare(password, user.password))) {
       return {
         access_token: await this.createAccessToken({
@@ -30,15 +30,21 @@ export class AuthService {
     throw new UnauthorizedException();
   }
 
-  async register(username: string, password: string) {
-    const user = await this.usersService.findOne(username);
+  async register(username: string, email: string, password: string) {
+    const user = await this.usersService.findOneByUsername(username);
     if (user) {
       throw new BadRequestException('User already exists');
+    }
+
+    const emailUser = await this.usersService.findOneByEmailAddress(email);
+    if (emailUser) {
+      throw new BadRequestException('Email already exists');
     }
 
     const hashedPassword = await this.hashingService.hash(password);
     const createdUser = await this.usersService.create(
       username,
+      email,
       hashedPassword,
     );
 
