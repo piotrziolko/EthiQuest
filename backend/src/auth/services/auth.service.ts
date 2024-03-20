@@ -23,6 +23,7 @@ export class AuthService {
         access_token: await this.createAccessToken({
           username: user.name,
           sub: user.uuid,
+          email: user.email,
           permissions: user.permissions,
         }),
       };
@@ -52,6 +53,7 @@ export class AuthService {
       access_token: await this.createAccessToken({
         username,
         sub: createdUser.uuid,
+        email: createdUser.email,
         permissions: createdUser.permissions,
       }),
     };
