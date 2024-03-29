@@ -1,8 +1,11 @@
 import { NgModule, Optional, SkipSelf } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { HeaderMenuComponent } from './components/header-menu/header-menu.component';
 
 @NgModule({
-  declarations: [],
+  declarations: [
+    HeaderMenuComponent
+  ],
   imports: [CommonModule],
 })
 export class CoreModule {
