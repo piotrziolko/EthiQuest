@@ -15,5 +15,42 @@ export default meta;
 type Story = StoryObj<HeaderMenuComponent>;
 
 export const Primary: Story = {
-  args: {},
+  args: {
+    menuItems: [
+      {
+        title: 'Home',
+        url: '/',
+      },
+      {
+        title: 'About',
+        url: '/about',
+      },
+      {
+        title: 'Services',
+        url: '/services',
+        children: [
+          {
+            title: 'Service 1',
+            description: 'Service 1 description',
+            url: '/services/service-1',
+          },
+          {
+            title: 'Service 2',
+            description: 'Service 2 description',
+            url: '/services/service-2',
+          },
+          {
+            title: 'Service 3',
+            description: 'Service 3 description',
+            url: '/services/service-3',
+          },
+          {
+            title: 'Service 4',
+            description: 'Service 4 description',
+            url: '/services/service-4',
+          },
+        ],
+      },
+    ],
+  },
 };
