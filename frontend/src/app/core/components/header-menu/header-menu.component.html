@@ -55,18 +55,19 @@
         <li *ngFor="let menuItem of menuItems; index as i">
           <a
             *ngIf="!menuItem?.children?.length; else withChildren"
-            href="{{ menuItem.url }}"
+            [attr.href]="menuItem.url"
+            [routerLink]="menuItem.routerLink"
             class="block py-2 px-3 text-gray-900 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-blue-500 md:dark:hover:bg-transparent dark:border-gray-700"
-            >{{ menuItem.title }}</a
+            >{{ menuItem.name }}</a
           >
           <ng-template #withChildren>
             <button
-              id="mega-menu-full-dropdown-button-{{ i }}"
-              data-collapse-toggle="mega-menu-dropdown-{{ i }}"
+              [id]="'mega-menu-full-dropdown-button-' + i"
+              [attr.data-collapse-toggle]="'mega-menu-dropdown-' + i"
               class="flex items-center justify-between w-full py-2 px-3 font-medium text-gray-900 border-b border-gray-100 md:w-auto hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-600 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-blue-500 md:dark:hover:bg-transparent dark:border-gray-700"
               (click)="toggleMenuItem(menuItem)"
             >
-              {{ menuItem.title }}
+              {{ menuItem.name }}
               <svg
                 class="w-2.5 h-2.5 ms-3"
                 aria-hidden="true"
@@ -91,20 +92,21 @@
   <ng-container *ngFor="let menuItem of menuItems; index as i">
     <div
       *ngIf="menuItem.children?.length"
-      id="mega-menu-dropdown-{{ i }}"
+      [id]="'mega-menu-dropdown-' + i"
       class="mt-1 bg-white border-gray-200 shadow-sm border-y dark:bg-gray-800 dark:border-gray-600"
       [class.hidden]="!menuItem.expanded"
     >
       <ul
         class="grid max-w-screen-xl px-4 py-5 mx-auto text-gray-900 dark:text-white sm:grid-cols-2 md:grid-cols-3 md:px-6"
-        [attr.aria-labelledby]="'mega-menu-full-dropdown-button-{{ i }}'"
+        [attr.aria-labelledby]="'mega-menu-full-dropdown-button-' + i"
       >
         <li *ngFor="let menuItemChildren of menuItem.children">
           <a
-            href="{{ menuItemChildren.url }}"
+            [attr.href]="menuItemChildren.url"
+            [routerLink]="menuItemChildren.routerLink"
             class="block p-3 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700"
           >
-            <div class="font-semibold">{{ menuItemChildren.title }}</div>
+            <div class="font-semibold">{{ menuItemChildren.name }}</div>
             <span class="text-sm text-gray-500 dark:text-gray-400">
               {{ menuItemChildren.description }}
             </span>

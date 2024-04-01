@@ -1,7 +1,8 @@
 export interface MenuItem {
-  title: string;
+  name: string;
   description?: string;
-  url: string;
+  url?: string;
+  routerLink?: string;
   expanded?: boolean;
   children?: MenuItem[];
 }

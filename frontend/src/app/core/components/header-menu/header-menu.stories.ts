@@ -16,36 +16,36 @@ type Story = StoryObj<HeaderMenuComponent>;
 
 export const Primary: Story = {
   args: {
-    menuItems: [
+    items: [
       {
-        title: 'Home',
+        name: 'Home',
         url: '/',
       },
       {
-        title: 'About',
+        name: 'About',
         url: '/about',
       },
       {
-        title: 'Services',
+        name: 'Services',
         url: '/services',
         children: [
           {
-            title: 'Service 1',
+            name: 'Service 1',
             description: 'Service 1 description',
             url: '/services/service-1',
           },
           {
-            title: 'Service 2',
+            name: 'Service 2',
             description: 'Service 2 description',
             url: '/services/service-2',
           },
           {
-            title: 'Service 3',
+            name: 'Service 3',
             description: 'Service 3 description',
             url: '/services/service-3',
           },
           {
-            title: 'Service 4',
+            name: 'Service 4',
             description: 'Service 4 description',
             url: '/services/service-4',
           },
