@@ -1,11 +1,11 @@
-<header>
-  <nav>
-    <a routerLink="/home">Home</a>
-    <a routerLink="/about">About</a>
-    <a routerLink="/contact">Contact</a>
-  </nav>
+<header class="border-b-8 border-gray-200 dark:border-gray-70">
+  <app-header-menu [title]="title" [items]="headerMenuItems"></app-header-menu>
 </header>
 <main>
-  <router-outlet />
+  <div class="mx-auto max-w-screen-xl px-4">
+    <router-outlet />
+  </div>
 </main>
-<footer class="mt-auto"></footer>
+<footer class="mt-auto">
+  <app-footer [title]="title"></app-footer>
+</footer>

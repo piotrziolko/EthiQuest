@@ -7,6 +7,7 @@ import { RouterLink } from '@angular/router';
 @NgModule({
   declarations: [HeaderMenuComponent, FooterComponent],
   imports: [CommonModule, RouterLink],
+  exports: [FooterComponent, HeaderMenuComponent],
 })
 export class CoreModule {
   constructor(@Optional() @SkipSelf() parentModule: CoreModule) {
