@@ -7,6 +7,7 @@ import { AuthInterceptor } from './core/interceptors/auth.interceptor';
 import { CoreModule } from './core/core.module';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
+import { LoginEffects } from '../store/login/login.effects';
 
 @NgModule({
   declarations: [AppComponent],
@@ -16,7 +17,7 @@ import { EffectsModule } from '@ngrx/effects';
     AppRoutingModule,
     HttpClientModule,
     StoreModule.forRoot({}, {}),
-    EffectsModule.forRoot([]),
+    EffectsModule.forRoot([LoginEffects]),
   ],
   providers: [
     {

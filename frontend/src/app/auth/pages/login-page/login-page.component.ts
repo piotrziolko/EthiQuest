@@ -36,7 +36,10 @@ export class LoginPageComponent {
   public submit(): void {
     if (this.formGroup.valid)
       this.store.dispatch(
-        login({ username: this.username, password: this.password }),
+        login({
+          username: this.formGroup.value.username,
+          password: this.formGroup.value.password,
+        }),
       );
   }
 }
