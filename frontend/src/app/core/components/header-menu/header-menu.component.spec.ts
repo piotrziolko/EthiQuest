@@ -8,10 +8,9 @@ describe('HeaderMenuComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [HeaderMenuComponent]
-    })
-    .compileComponents();
-    
+      declarations: [HeaderMenuComponent],
+    }).compileComponents();
+
     fixture = TestBed.createComponent(HeaderMenuComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

@@ -13,18 +13,24 @@ const initialState: LoginState = {
   isLoading: false,
 };
 
-export const loginReducer = createReducer(
+export const loginReducer = createReducer<LoginState>(
   initialState,
-  on(login, (state) => ({ ...state, isLoading: true })),
-  on(loginSuccess, (state, { token }) => ({
-    ...state,
-    token,
-    isLoading: false,
-    error: null,
-  })),
-  on(loginFailure, (state, { error }) => ({
-    ...state,
-    error,
-    isLoading: false,
-  })),
+  on(login, (state): LoginState => ({ ...state, isLoading: true })),
+  on(
+    loginSuccess,
+    (state, { token }): LoginState => ({
+      ...state,
+      token,
+      isLoading: false,
+      error: null,
+    }),
+  ),
+  on(
+    loginFailure,
+    (state, { error }): LoginState => ({
+      ...state,
+      error,
+      isLoading: false,
+    }),
+  ),
 );

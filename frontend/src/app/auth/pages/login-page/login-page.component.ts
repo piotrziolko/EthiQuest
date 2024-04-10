@@ -16,17 +16,21 @@ import { login } from '../../../../store/login/login.actions';
 })
 export class LoginPageComponent {
   public formGroup: FormGroup;
+  selectToken$ = this.store.select(selectToken);
+  selectError$ = this.store.select(selectError);
+  selectIsLoading$ = this.store.select(selectIsLoading);
+
   token: string | null = '';
   error: string | null = '';
   isLoading = false;
 
   constructor(private store: Store) {
     this.formGroup = LoginPageFormBuild.buildForm();
-    this.store.select(selectToken).subscribe((token) => (this.token = token));
-    this.store.select(selectError).subscribe((error) => (this.error = error));
-    this.store
-      .select(selectIsLoading)
-      .subscribe((isLoading) => (this.isLoading = isLoading));
+    this.selectToken$.subscribe((token) => (this.token = token));
+    this.selectError$.subscribe((error) => (this.error = error));
+    this.selectIsLoading$.subscribe(
+      (isLoading) => (this.isLoading = isLoading),
+    );
   }
 
   public submit(): void {
