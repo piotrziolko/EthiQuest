@@ -1,13 +1,13 @@
 import { createReducer, on } from '@ngrx/store';
 import { login, loginSuccess, loginFailure } from './login.actions';
 
-export interface State {
+export interface LoginState {
   token: string | null;
   error: string | null;
   isLoading: boolean;
 }
 
-const initialState: State = {
+const initialState: LoginState = {
   token: null,
   error: null,
   isLoading: false,
@@ -20,6 +20,7 @@ export const loginReducer = createReducer(
     ...state,
     token,
     isLoading: false,
+    error: null,
   })),
   on(loginFailure, (state, { error }) => ({
     ...state,

@@ -8,6 +8,7 @@ import { CoreModule } from './core/core.module';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { LoginEffects } from '../store/login/login.effects';
+import { loginReducer } from '../store/login/login.reducer';
 
 @NgModule({
   declarations: [AppComponent],
@@ -16,7 +17,7 @@ import { LoginEffects } from '../store/login/login.effects';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    StoreModule.forRoot({}, {}),
+    StoreModule.forRoot({ login: loginReducer }, {}),
     EffectsModule.forRoot([LoginEffects]),
   ],
   providers: [

@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { LoginPageFormBuild } from './login-page-form.build';
 import { FormGroup } from '@angular/forms';
-import { AuthService } from '../../services/auth.service';
 import { Store } from '@ngrx/store';
 import {
   selectError,
@@ -17,14 +16,11 @@ import { login } from '../../../../store/login/login.actions';
 })
 export class LoginPageComponent {
   public formGroup: FormGroup;
-  token = '';
-  error = '';
+  token: string | null = '';
+  error: string | null = '';
   isLoading = false;
 
-  constructor(
-    private readonly authService: AuthService,
-    private store: Store,
-  ) {
+  constructor(private store: Store) {
     this.formGroup = LoginPageFormBuild.buildForm();
     this.store.select(selectToken).subscribe((token) => (this.token = token));
     this.store.select(selectError).subscribe((error) => (this.error = error));
