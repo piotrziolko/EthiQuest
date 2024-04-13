@@ -29,7 +29,7 @@ export class AppComponent {
         : [
             {
               name: 'Login',
-              routerLink: '/login',
+              routerLink: '/auth/login',
             },
           ]),
       ...(this.isLogged
