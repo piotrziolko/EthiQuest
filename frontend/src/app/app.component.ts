@@ -12,6 +12,7 @@ import { tap } from 'rxjs';
 export class AppComponent implements OnInit {
   selectToken$ = this.store.select(selectToken);
   public title = 'EthiQuest';
+  public menuItems: MenuItem[] = [];
   private isLogged: boolean = false;
 
   constructor(private store: Store) {}
@@ -21,58 +22,61 @@ export class AppComponent implements OnInit {
       .pipe(
         tap((token) => {
           this.isLogged = !!token;
+          this.loadHeaderMenuItems();
         }),
       )
       .subscribe();
   }
 
-  get headerMenuItems(): MenuItem[] {
-    return [
-      {
-        name: 'Home',
-        routerLink: '/',
-      },
-      {
-        name: 'About',
-        routerLink: '/about',
-      },
-      {
-        name: 'Contact',
-        routerLink: '/contact',
-      },
-      ...(this.isLogged
-        ? []
-        : [
-            {
-              name: 'Login',
-              routerLink: '/auth/login',
-            },
-          ]),
-      ...(this.isLogged
-        ? [
-            {
-              name: 'My profile',
-              routerLink: '/profile',
-              children: [
-                {
-                  name: 'My account',
-                  routerLink: '/profile/account',
-                  description: 'View your account',
-                },
-                {
-                  name: 'Settings',
-                  routerLink: '/profile/settings',
-                  description: 'Change your settings',
-                },
-                {
-                  name: 'Logout',
-                  routerLink: '/profile/logout',
-                  description: 'Logout from your account',
-                },
-              ],
-            },
-          ]
-        : []),
+  private loadHeaderMenuItems() {
+    this.menuItems = [
+      ...[
+        {
+          name: 'Home',
+          routerLink: '/',
+        },
+        {
+          name: 'About',
+          routerLink: '/about',
+        },
+        {
+          name: 'Contact',
+          routerLink: '/contact',
+        },
+        ...(this.isLogged
+          ? []
+          : [
+              {
+                name: 'Login',
+                routerLink: '/auth/login',
+              },
+            ]),
+        ...(this.isLogged
+          ? [
+              {
+                name: 'My profile',
+                routerLink: '/profile',
+                children: [
+                  {
+                    name: 'My account',
+                    routerLink: '/profile/account',
+                    description: 'View your account',
+                  },
+                  {
+                    name: 'Settings',
+                    routerLink: '/profile/settings',
+                    description: 'Change your settings',
+                  },
+                  {
+                    name: 'Logout',
+                    routerLink: '/profile/logout',
+                    description: 'Logout from your account',
+                  },
+                ],
+              },
+            ]
+          : []),
+      ],
     ];
   }
 }
