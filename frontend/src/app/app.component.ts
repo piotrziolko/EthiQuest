@@ -1,14 +1,30 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MenuItem } from './core/models/interfaces/menu-item';
+import { selectToken } from '../store/login/login.selectors';
+import { Store } from '@ngrx/store';
+import { tap } from 'rxjs';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })
-export class AppComponent {
-  public isLogged = false;
+export class AppComponent implements OnInit {
+  selectToken$ = this.store.select(selectToken);
   public title = 'EthiQuest';
+  private isLogged: boolean = false;
+
+  constructor(private store: Store) {}
+
+  ngOnInit() {
+    this.selectToken$
+      .pipe(
+        tap((token) => {
+          this.isLogged = !!token;
+        }),
+      )
+      .subscribe();
+  }
 
   get headerMenuItems(): MenuItem[] {
     return [

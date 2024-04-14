@@ -11,7 +11,9 @@ export class HeaderMenuComponent implements OnInit {
 
   @Input() titleUrl = '/';
 
-  @Input() items: MenuItem[] = [];
+  @Input() set items(value: MenuItem[]) {
+    this.menuItems = value.map((item) => ({ ...item, expanded: false }));
+  }
   menuItems: MenuItem[] = [];
 
   public toggledMenu: boolean = false;
