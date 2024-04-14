@@ -9,6 +9,7 @@ import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { LoginEffects } from '../store/login/login.effects';
 import { loginReducer } from '../store/login/login.reducer';
+import { FeaturesModule } from './features/features.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -17,6 +18,7 @@ import { loginReducer } from '../store/login/login.reducer';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    FeaturesModule,
     StoreModule.forRoot({ login: loginReducer }, {}),
     EffectsModule.forRoot([LoginEffects]),
   ],
