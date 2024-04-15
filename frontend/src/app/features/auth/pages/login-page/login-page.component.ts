@@ -6,8 +6,8 @@ import {
   selectError,
   selectIsLoading,
   selectToken,
-} from '../../../../store/login/login.selectors';
-import { login } from '../../../../store/login/login.actions';
+} from '../../../../../store/login/login.selectors';
+import { login } from '../../../../../store/login/login.actions';
 
 @Component({
   selector: 'app-login-page',
