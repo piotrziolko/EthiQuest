@@ -4,10 +4,11 @@ import {
   CanActivate,
   Router,
   RouterStateSnapshot,
+  UrlTree,
 } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { selectToken } from '../../../store/login/login.selectors';
-import { Observable, tap } from 'rxjs';
+import { Observable, map } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
 export class AuthGuard implements CanActivate {
@@ -21,14 +22,13 @@ export class AuthGuard implements CanActivate {
   canActivate(
     router: ActivatedRouteSnapshot,
     state: RouterStateSnapshot,
-  ): Observable<boolean | null> {
+  ): Observable<boolean | UrlTree> {
     return this.selectToken$.pipe(
-      tap((isLogged) => {
+      map((isLogged) => {
         if (!isLogged) {
-          this.router.navigate(['/auth/login'], {
+          return this.router.createUrlTree(['/auth/login'], {
             queryParams: { returnUrl: state.url },
           });
-          return false;
         }
 
         return true;
