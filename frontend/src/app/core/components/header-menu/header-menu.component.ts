@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { MenuItem } from '../../models/interfaces/menu-item';
 
 @Component({
@@ -6,7 +6,7 @@ import { MenuItem } from '../../models/interfaces/menu-item';
   templateUrl: './header-menu.component.html',
   styleUrl: './header-menu.component.scss',
 })
-export class HeaderMenuComponent implements OnInit {
+export class HeaderMenuComponent {
   @Input() title = 'Header Menu';
 
   @Input() titleUrl = '/';
@@ -33,12 +33,5 @@ export class HeaderMenuComponent implements OnInit {
 
   public toggleMenu() {
     this.toggledMenu = !this.toggledMenu;
-  }
-
-  ngOnInit() {
-    this.menuItems = this.items.map((item) => ({
-      ...item,
-      expanded: false,
-    }));
   }
 }

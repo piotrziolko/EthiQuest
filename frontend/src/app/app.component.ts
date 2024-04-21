@@ -59,7 +59,7 @@ export class AppComponent implements OnInit {
                 children: [
                   {
                     name: 'My account',
-                    routerLink: '/profile/account',
+                    routerLink: '/profile',
                     description: 'View your account',
                   },
                   {

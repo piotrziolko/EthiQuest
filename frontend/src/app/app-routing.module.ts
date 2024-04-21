@@ -9,12 +9,21 @@ const routes: Routes = [
       import('./features/auth/auth.module').then((m) => m.AuthModule),
   },
   {
-    path: 'my-account',
+    path: 'profile',
     canActivate: [AuthGuard],
     loadChildren: () =>
       import('./features/my-account/my-account.module').then(
         (m) => m.MyAccountModule,
       ),
+  },
+  {
+    path: '',
+    loadChildren: () =>
+      import('./features/home/home.module').then((m) => m.HomeModule),
+  },
+  {
+    path: '**',
+    redirectTo: '/',
   },
 ];
 
