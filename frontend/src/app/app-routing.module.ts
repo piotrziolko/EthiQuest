@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from './core/guards/auth.guard';
+import { NotFoundComponent } from './core/components/not-found/not-found.component';
 
 const routes: Routes = [
   {
@@ -21,10 +22,8 @@ const routes: Routes = [
     loadChildren: () =>
       import('./features/home/home.module').then((m) => m.HomeModule),
   },
-  {
-    path: '**',
-    redirectTo: '/',
-  },
+  { path: '404', component: NotFoundComponent },
+  { path: '**', redirectTo: '/404' },
 ];
 
 @NgModule({
