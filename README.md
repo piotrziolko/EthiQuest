@@ -7,5 +7,9 @@ EthiQuest is an interactive online platform designed to engage users in voting o
 
 ## Stage 1: MVP Development
 - [ ] Implement core features such as registration/login, voting, comments
-- [ ] Create a content management system for creating and publishing ethical dilemmas  
+- [ ] Create a content management system for creating and publishing ethical dilemmas
 - [ ] Implement basic discussion moderation
+
+## Stage 2: further development
+- [ ]  Enhance the user experience with improved UI/UX design
+- [ ] Implement advanced moderation features (e.g., automated content filtering, user reporting)
